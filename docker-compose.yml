@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    container_name: postgres_db_product
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdatacar:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=product_db
+      - POSTGRES_USER=dwiki
+      - POSTGRES_PASSWORD=dwiki123
+volumes:
+  pgdatacar:

@@ -4,6 +4,10 @@ import fs from "fs/promises";
 import path from "path";
 import Link from "next/link";
 
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 const inter = Inter({ subsets: ["latin"] });
 
 interface Product {
@@ -36,8 +40,6 @@ export default function Home({ products }: Props) {
 }
 
 export async function getStaticProps() {
-  console.log("(Re-)Generating");
-
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
   const jsonData = await fs.readFile(filePath);
   const dataProducts: Props = JSON.parse(jsonData.toString());
